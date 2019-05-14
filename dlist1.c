@@ -9,9 +9,6 @@ size_t print_dlistint(const dlistint_t *h)
 {
 	size_t i = 0;
 
-	if (!h)
-	return (0);
-
 	while (h)
 	{
 		printf("%d\n", h->n);
@@ -30,9 +27,6 @@ size_t dlistint_len(const dlistint_t *h)
 {
 	size_t i = 0;
 
-	if (!h)
-		return (0);
-
 	while (h)
 	{
 		h = h->next;
@@ -49,9 +43,6 @@ size_t dlistint_len(const dlistint_t *h)
 int sum_dlistint(dlistint_t *head)
 {
 	int sum = 0;
-
-	if (!head)
-		return (0);
 
 	while (head)
 	{
