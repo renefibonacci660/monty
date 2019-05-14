@@ -8,6 +8,8 @@
 #include <ctype.h>
 #include <stdarg.h>
 
+#define FAILURE 0
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,10 +40,15 @@ typedef struct instruction_s
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+#include "lists.h"
+
+
 /* stack.c */
 int push(stack_t **head, int n);
 int pop(stack_t **head);
 int peek(stack_t **head);
 int is_empty(stack_t **head);
+void pall(stack_t **head);
 
 #endif
