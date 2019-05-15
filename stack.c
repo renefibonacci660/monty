@@ -22,14 +22,10 @@ int pop(stack_t **head)
 {
 	stack_t *node = get_dnodeint_at_index(*head, 0);
 	int n = 0;
-	if (node)
-	{
-		n = node->n;
-		if (delete_dnodeint_at_index(head, 0))
-			return n;
-		return (FAILURE); /* TODO: error code? */
-	}
-	return (FAILURE);
+	
+	n = node->n;
+	delete_dnodeint_at_index(head, 0);
+	return n;
 }
 
 /**
