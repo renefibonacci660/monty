@@ -1,12 +1,11 @@
 #include "monty.h"
 
 /**
- * push - pushes node to stack
+ * opcode_push - pushes an element to the stack
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return: 1 is added 0 otherwise
+ * @line_number: number of line
  **/
-void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void opcode_push(stack_t **stack, unsigned int line_number)
 {
 	if (data()->num_words < 2 || !is_num(data()->words[1]))
 	{
@@ -25,12 +24,11 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
 }
 
 /**
- * pop - 
+ * opcode_pop - removes the top (ever only) element of the stack
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
-void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void opcode_pop(stack_t **stack, unsigned int line_number)
 {
 	if (!get_dnodeint_at_index(*stack, 0))
 	{
@@ -42,12 +40,11 @@ void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number
 }
 
 /**
- * peek - 
+ * opcode_pint - prints top stack value, followed by \n
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
-void opcode_pint(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void opcode_pint(stack_t **stack, unsigned int line_number)
 {
 	if (!get_dnodeint_at_index(*stack, 0))
 	{
@@ -59,23 +56,21 @@ void opcode_pint(stack_t **stack, __attribute__((unused))unsigned int line_numbe
 }
 
 /**
- * pall - 
+ * opcode_pall - prints all the values from top down on stack
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
-void opcode_pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void opcode_pall(stack_t **stack, unsigned int line_number)
 {
 	print_dlistint(*stack);
 }
 
 /**
- * swap - 
+ * opcode_swap - swaps the top two elements of the stack
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
-void opcode_swap(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void opcode_swap(stack_t **stack, unsigned int line_number)
 {
 	int n;
 
