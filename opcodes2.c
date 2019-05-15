@@ -56,7 +56,7 @@ void opcode_sub(__attribute__((unused))stack_t **stack,
 }
 
 /**
- * opcode_dib - opcode for division (/)
+ * opcode_div - opcode for division (/)
  * @stack: pointer to pointer to first node
  * @line_number: number of line
  **/
@@ -78,7 +78,7 @@ void opcode_div(__attribute__((unused))stack_t **stack,
 	{
 		dprintf(STDERR_FILENO, ERR_ZERO, data()->line_number);
 		free_data(1);
-		exit(EXIT_FAILURE);	
+		exit(EXIT_FAILURE);
 	}
 	insert_dnodeint_at_index(stack, 0, m / n);
 }
