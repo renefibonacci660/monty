@@ -4,10 +4,10 @@
  * interpret - Primary starting point for program
  * @ac: argument count
  * @av: argument vector
- * Returns: 1 on success, 0 on failure
+ * Return: 1 on success, 0 on failure
  */
 int interpret(int ac, char **av)
-{	
+{
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, USAGE);
@@ -24,14 +24,14 @@ int interpret(int ac, char **av)
 	}
 
 	parse_opcodes();
-	
+
 	return (EXIT_SUCCESS);
 }
 
 /**
  * parse_opcodes - parses opcodes read from script file
  */
-void parse_opcodes()
+void parse_opcodes(void)
 {
 	ssize_t rbytes = 0;
 	size_t n = 0;
@@ -62,7 +62,7 @@ void parse_opcodes()
 /**
  * exec_opcode - Executes the given opcode if valid
  * @word: the opcode string
- * Returns: 1 on success, 0 on failure
+ * Return: 1 on success, 0 on failure
  */
 int exec_opcode(char *word)
 {
