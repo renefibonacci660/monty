@@ -1,0 +1,74 @@
+#include "monty.h"
+
+/**
+ * push - pushes node to stack
+ * @stack: pointer to pointer to first node
+ * @n: int value to be in added node
+ * Return: 1 is added 0 otherwise
+ **/
+void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	if (data.num_words < 2)
+	{
+		dprintf(STDERR_FILENO, "PUSH needs an argument! Line: %d\n", data.line_number);
+		return;
+	}
+	printf("PUSH %d\n", atoi(data.words[1]));
+	push(stack, atoi(data.words[1]));
+}
+
+/**
+ * pop - 
+ * @stack: pointer to pointer to first node
+ * @n: int value to be in added node
+ * Return:
+ **/
+void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	printf("POP\n");
+	printf("%d\n", pop(stack));
+}
+
+/**
+ * peek - 
+ * @stack: pointer to pointer to first node
+ * @n: int value to be in added node
+ * Return:
+ **/
+void opcode_pint(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	printf("PINT\n");
+	printf("%d\n", peek(stack));
+}
+
+/**
+ * pall - 
+ * @stack: pointer to pointer to first node
+ * @n: int value to be in added node
+ * Return:
+ **/
+void opcode_pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	printf("PALL\n");
+	print_dlistint(*stack);
+}
+
+/**
+ * swap - 
+ * @stack: pointer to pointer to first node
+ * @n: int value to be in added node
+ * Return:
+ **/
+void opcode_swap(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	int n;
+
+	if (!get_dnodeint_at_index(*stack, 1))
+	{
+		dprintf(STDERR_FILENO, ERR_SWAP, data.line_number);
+		return;
+	}
+	n = pop(stack);
+	(void)n;
+	insert_dnodeint_at_index(stack, 1, n);
+}

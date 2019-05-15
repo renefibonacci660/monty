@@ -38,63 +38,42 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 }
 
 /**
- * insert_dnodeint_at_index - inserts a node at specified position in main
- * @h: pointer to pointer of first node in linked list
- * @idx: placement for new node
- * @n: number value assigned to node
- * Return: address of new node or NULL if failed
+ * insert_dnodeint_at_index - inserts node at given index
+ * @h: address of pointer to current head node
+ * @idx: the index to at which to insert
+ * @n: the value of the inserted node
+ *
+ * Return: new node or NULL
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *newNode;
-	dlistint_t *tmp;
-	unsigned int counter;
+	dlistint_t *new = malloc(sizeof(dlistint_t)), *node;
 
-	if (!h || (!*h && idx != 0))
-		return (NULL);
-
-	newNode = malloc(sizeof(dlistint_t));
-
-	if (!newNode)
-		return (NULL);
-	newNode->n = n;
-
-	if (!newNode)
-		return (NULL);
-
-	tmp = *h;
-
-	if (idx == 0)
+	if (!h || !new)
+		return (new ? free(new), NULL : NULL);
+	node = *h;
+	new->n = n;
+	if (!idx)
 	{
-		if (*h)
-		{
-			tmp->prev = newNode;
-			newNode->next = tmp;
-			*h = newNode;
-		}
-		else
-			*h = newNode;
-
-		return (newNode);
+		new->prev = NULL;
+		new->next = node ? node : NULL;
+		if (node)
+			node->prev = new;
+		return (*h = new);
 	}
-	for (counter = 0; tmp; counter++)
+	for (; node; node = node->next, idx--)
 	{
-		if (counter == idx - 1)
+		if (idx - 1 == 0)
 		{
-			if (tmp->next)
-			{
-				tmp->next->prev = newNode;
-				newNode->next = tmp->next;
-			}
-			tmp->next = newNode;
-			newNode->prev = tmp;
-			return (newNode);
+			new->prev = node;
+			new->next = node->next;
+			if (new->next)
+				new->next->prev = new;
+			node->next = new;
+			return (new);
 		}
-		tmp = tmp->next;
 	}
-
-	free(newNode);
-	return (NULL);
+	return (free(new), NULL);
 }
 
 /**

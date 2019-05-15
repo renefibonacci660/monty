@@ -7,9 +7,11 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdarg.h>
+#include <errno.h>
 
 #define FAILURE 0
-
+#define USAGE "USAGE: monty file\n"
+#define ERR_SWAP "L<%d>: can't swap, stack too short\n"
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -40,6 +42,24 @@ typedef struct instruction_s
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct data - paramater pattern
+ * @file_ptr: file_ptr to opened file
+ *
+ * Description: parameter pattern
+ */
+typedef struct data
+{
+	FILE *file_ptr;
+	stack_t *stack;
+	unsigned int line_number;
+	char **words;
+	int num_words;
+} data_t;
+
+#define INIT_DATA {NULL, NULL, 1, NULL, 0}
+
+extern data_t data;
 
 #include "lists.h"
 
@@ -49,6 +69,22 @@ int push(stack_t **head, int n);
 int pop(stack_t **head);
 int peek(stack_t **head);
 int is_empty(stack_t **head);
-void pall(stack_t **head);
+void pall(stack_t *head);
+
+/* token.c */
+char **strtow(char *str, char *d);
+int is_delim(char c, char *delim);
+void ffree(char **pp);
+
+/* opcodes1.c */
+void opcode_push(stack_t **stack, unsigned int line_number);
+void opcode_pop(stack_t **stack, unsigned int line_number);
+void opcode_pint(stack_t **stack, unsigned int line_number);
+void opcode_pall(stack_t **stack, unsigned int line_number);
+void opcode_swap(stack_t **stack, unsigned int line_number);
+
+/* opcodes1.c */
+void opcode_nop(__attribute__((unused))stack_t **stack,
+	__attribute__((unused))unsigned int line_number);
 
 #endif

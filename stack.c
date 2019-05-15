@@ -64,7 +64,7 @@ int is_empty(stack_t **head)
  * @n: int value to be in added node
  * Return:
  **/
-void pall(stack_t **head)
+void pall(stack_t *head)
 {
-	print_dlistint(*head);
+	print_dlistint(head);
 }
