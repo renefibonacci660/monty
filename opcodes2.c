@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * swap - 
+ * opcode_nop - 
  * @stack: pointer to pointer to first node
  * @n: int value to be in added node
  * Return:
@@ -10,4 +10,27 @@ void opcode_nop(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number)
 {
 
+}
+
+/**
+ * opcode_add - 
+ * @stack: pointer to pointer to first node
+ * @n: int value to be in added node
+ * Return:
+ **/
+void opcode_add(__attribute__((unused))stack_t **stack,
+	__attribute__((unused))unsigned int line_number)
+{
+	int n;
+	int m;
+
+	if (!get_dnodeint_at_index(*stack, 1))
+	{
+		dprintf(STDERR_FILENO, ERR_ADD, data.line_number);
+		return;
+	}
+	n = pop(stack);
+	m = pop(stack);
+	(void)n;
+	insert_dnodeint_at_index(stack, 1, n + m);
 }
