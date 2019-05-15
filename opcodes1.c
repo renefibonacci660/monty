@@ -30,7 +30,7 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
  * @n: int value to be in added node
  * Return:
  **/
-void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void opcode_pop(stack_t **stack, unsigned int line_number)
 {
 	int n = 0;
 	if (!get_dnodeint_at_index(*stack, 0))
@@ -49,7 +49,7 @@ void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number
  * @n: int value to be in added node
  * Return:
  **/
-void opcode_pint(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void opcode_pint(stack_t **stack, unsigned int line_number)
 {
 	if (!get_dnodeint_at_index(*stack, 0))
 	{
