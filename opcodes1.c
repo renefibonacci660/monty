@@ -13,7 +13,6 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
 		dprintf(STDERR_FILENO, "PUSH needs an argument! Line: %d\n", data()->line_number);
 		return;
 	}
-	printf("PUSH %d\n", atoi(data()->words[1]));
 	push(stack, atoi(data()->words[1]));
 }
 
@@ -25,7 +24,6 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
  **/
 void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	printf("POP\n");
 	printf("%d\n", pop(stack));
 }
 
@@ -37,7 +35,6 @@ void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number
  **/
 void opcode_pint(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	printf("PINT\n");
 	printf("%d\n", peek(stack));
 }
 
@@ -49,7 +46,6 @@ void opcode_pint(stack_t **stack, __attribute__((unused))unsigned int line_numbe
  **/
 void opcode_pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	printf("PALL\n");
 	print_dlistint(*stack);
 }
 
