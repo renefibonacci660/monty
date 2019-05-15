@@ -13,6 +13,7 @@
 #define USAGE "USAGE: monty file\n"
 #define ERR_SWAP "L<%d>: can't swap, stack too short\n"
 #define ERR_ADD "L<%d>: can't pop an empty stack\n"
+#define ERR_SUB "L<%d>: can't sub, stack too short\n"
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -98,5 +99,8 @@ void opcode_nop(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number);
 void opcode_add(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number);
+void opcode_sub(__attribute__((unused))stack_t **stack,
+	__attribute__((unused))unsigned int line_number);
+
 
 #endif

@@ -78,6 +78,7 @@ int exec_opcode(char *word)
 		{"swap", opcode_swap},
 		{"nop", opcode_nop},
 		{"add", opcode_add},
+		{"sub", opcode_sub},
 		{NULL, NULL}
 	};
 
