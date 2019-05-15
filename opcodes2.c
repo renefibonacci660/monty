@@ -1,10 +1,9 @@
 #include "monty.h"
 
 /**
- * opcode_nop - 
+ * opcode_nop - opcode for nop
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
 void opcode_nop(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number)
@@ -13,10 +12,9 @@ void opcode_nop(__attribute__((unused))stack_t **stack,
 }
 
 /**
- * opcode_add - 
+ * opcode_add - opcode for additon (+)
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
 void opcode_add(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number)
@@ -36,10 +34,9 @@ void opcode_add(__attribute__((unused))stack_t **stack,
 }
 
 /**
- * opcode_sub - 
+ * opcode_sub - opcode for subtraction (-)
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
 void opcode_sub(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number)
@@ -59,10 +56,9 @@ void opcode_sub(__attribute__((unused))stack_t **stack,
 }
 
 /**
- * opcode_div - 
+ * opcode_dib - opcode for division (/)
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
 void opcode_div(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number)
@@ -88,10 +84,9 @@ void opcode_div(__attribute__((unused))stack_t **stack,
 }
 
 /**
- * opcode_mul - 
+ * opcode_mul - opcode for multiplication (*)
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
 void opcode_mul(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number)
