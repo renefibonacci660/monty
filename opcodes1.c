@@ -27,6 +27,12 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
  **/
 void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
+	if (!get_dnodeint_at_index(*stack, 0))
+	{
+		dprintf(STDERR_FILENO, ERR_POP, data()->line_number);
+		free_data(1);
+		exit(EXIT_FAILURE);
+	}
 	printf("%d\n", pop(stack));
 }
 
@@ -71,7 +77,8 @@ void opcode_swap(stack_t **stack, __attribute__((unused))unsigned int line_numbe
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
 		dprintf(STDERR_FILENO, ERR_SWAP, data()->line_number);
-		return;
+		free_data(1);
+		exit(EXIT_FAILURE);
 	}
 	n = pop(stack);
 	insert_dnodeint_at_index(stack, 1, n);

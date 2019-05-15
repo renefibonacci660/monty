@@ -27,11 +27,11 @@ void opcode_add(__attribute__((unused))stack_t **stack,
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
 		dprintf(STDERR_FILENO, ERR_ADD, data()->line_number);
-		return;
+		free_data(1);
+		exit(EXIT_FAILURE);
 	}
 	n = pop(stack);
 	m = pop(stack);
-	(void)n;
 	insert_dnodeint_at_index(stack, 0, n + m);
 }
 
@@ -50,11 +50,11 @@ void opcode_sub(__attribute__((unused))stack_t **stack,
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
 		dprintf(STDERR_FILENO, ERR_SUB, data()->line_number);
-		return;
+		free_data(1);
+		exit(EXIT_FAILURE);
 	}
 	n = pop(stack);
 	m = pop(stack);
-	(void)n;
 	insert_dnodeint_at_index(stack, 0, m - n);
 }
 
@@ -73,11 +73,11 @@ void opcode_div(__attribute__((unused))stack_t **stack,
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
 		dprintf(STDERR_FILENO, ERR_DIV, data()->line_number);
-		return;
+		free_data(1);
+		exit(EXIT_FAILURE);
 	}
 	n = pop(stack);
 	m = pop(stack);
-	(void)n;
 	insert_dnodeint_at_index(stack, 0, m / n);
 }
 
@@ -96,10 +96,10 @@ void opcode_mul(__attribute__((unused))stack_t **stack,
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
 		dprintf(STDERR_FILENO, ERR_MUL, data()->line_number);
-		return;
+		free_data(1);
+		exit(EXIT_FAILURE);
 	}
 	n = pop(stack);
 	m = pop(stack);
-	(void)n;
 	insert_dnodeint_at_index(stack, 0, m * n);
 }
