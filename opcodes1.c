@@ -16,7 +16,12 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
 		return;
 	}
 
-	push(stack, atoi(data()->words[1]));
+	if (!push(stack, atoi(data()->words[1])))
+	{
+		dprintf(STDERR_FILENO, ERR_MALLOC);
+		free_data(1);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
@@ -27,13 +32,15 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
  **/
 void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
+	int n = 0;
 	if (!get_dnodeint_at_index(*stack, 0))
 	{
 		dprintf(STDERR_FILENO, ERR_POP, data()->line_number);
 		free_data(1);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", pop(stack));
+	n = pop(stack);
+	printf("%d\n", n);
 }
 
 /**
