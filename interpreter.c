@@ -17,12 +17,9 @@ int interpret(int ac, char **av)
 	data()->fp = fopen(av[1], "r");
 	if (!data()->fp)
 	{
-		if (errno == EACCES)
-			dprintf(STDERR_FILENO, "Error: EACCES\n");
-		else if (errno == ENOENT)
-			dprintf(STDERR_FILENO, "Error: ENOENT\n");
-		else
-			dprintf(STDERR_FILENO, "Error: FILE PTR NULL\n");
+
+		dprintf(STDERR_FILENO, ERR_FILE, av[1]);
+		free_data(1);
 		return (EXIT_FAILURE);
 	}
 
@@ -92,7 +89,8 @@ int exec_opcode(char *word)
 			return (1);
 		}
 	}
-	dprintf(STDERR_FILENO, "Opcode %s not found! On line: %d\n",
-		word, data()->line_number);
+	dprintf(STDERR_FILENO, ERR_OPCODE, data()->line_number, word);
+	free_data(1);
+	exit(EXIT_FAILURE);
 	return (0);
 }

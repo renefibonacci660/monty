@@ -10,7 +10,9 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
 {
 	if (data()->num_words < 2)
 	{
-		dprintf(STDERR_FILENO, "PUSH needs an argument! Line: %d\n", data()->line_number);
+		dprintf(STDERR_FILENO, ERR_PUSH, data()->line_number);
+		free_data(1);
+		exit(EXIT_FAILURE);
 		return;
 	}
 	push(stack, atoi(data()->words[1]));
