@@ -91,6 +91,7 @@ void free_data(int all);
 char **strtow(char *str, char *d);
 int is_delim(char c, char *delim);
 void ffree(char **pp);
+int is_num(char *str);
 
 /* opcodes1.c */
 void opcode_push(stack_t **stack, unsigned int line_number);

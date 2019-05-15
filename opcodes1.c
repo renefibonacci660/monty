@@ -8,13 +8,14 @@
  **/
 void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	if (data()->num_words < 2)
+	if (data()->num_words < 2 || !is_num(data()->words[1]))
 	{
 		dprintf(STDERR_FILENO, ERR_PUSH, data()->line_number);
 		free_data(1);
 		exit(EXIT_FAILURE);
 		return;
 	}
+
 	push(stack, atoi(data()->words[1]));
 }
 

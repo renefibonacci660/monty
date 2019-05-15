@@ -76,3 +76,18 @@ void ffree(char **pp)
 		free(*pp++);
 	free(a);
 }
+
+int is_num(char *str)
+{
+	if (!str)
+		return (0);
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
+	}
+	return (1);
+}
