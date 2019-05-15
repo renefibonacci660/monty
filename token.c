@@ -51,7 +51,7 @@ char **strtow(char *str, char *d)
 /**
  * is_delim - checks if character is a delimeter
  * @c: the char to check
- * @delim: the delimeter string
+ * @delim: the delimiter string
  * Return: 1 if true, 0 if false
  */
 int is_delim(char c, char *delim)
@@ -77,6 +77,11 @@ void ffree(char **pp)
 	free(a);
 }
 
+/**
+ * is_num - increments thru str to find num
+ * @str: str to check
+ * Return: 1 if true, 0 if false
+ */
 int is_num(char *str)
 {
 	if (!str)
