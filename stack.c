@@ -55,7 +55,7 @@ int peek(stack_t **head)
  **/
 int is_empty(stack_t **head)
 {
-	return (!!get_dnodeint_at_index(*head, 0));
+	return (!get_dnodeint_at_index(*head, 0));
 }
 
 /**

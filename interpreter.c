@@ -2,85 +2,73 @@
 
 data_t data = INIT_DATA; 
 
-void main_loop();
-int get_opcode(char *word);
-
-int main(int ac, char **av)
-{
-	FILE *file_ptr = NULL;
-	
+/**
+ * interpret - Primary starting point for program
+ * @ac: argument count
+ * @av: argument vector
+ * Returns: 1 on success, 0 on failure
+ */
+int interpret(int ac, char **av)
+{	
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, USAGE);
 		return (EXIT_FAILURE);
 	}
 
-	file_ptr = fopen(av[1], "r");
-	if (!file_ptr)
+	data.fp = fopen(av[1], "r");
+	if (!data.fp)
 	{
 		if (errno == EACCES)
-		{
-			dprintf(STDERR_FILENO, "EACCES\n");
-			exit(126);
-		}
-		if (errno == ENOENT)
-		{
-			dprintf(STDERR_FILENO, "ENOENT\n");
-			exit(127);
-		}
-		dprintf(STDERR_FILENO, "FILE_PTR NULL!\n");
+			dprintf(STDERR_FILENO, "Error: EACCES\n");
+		else if (errno == ENOENT)
+			dprintf(STDERR_FILENO, "Error: ENOENT\n");
+		else
+			dprintf(STDERR_FILENO, "Error: FILE PTR NULL\n");
 		return (EXIT_FAILURE);
 	}
-	data.file_ptr = file_ptr;
 
-	main_loop();
-
-	fclose(file_ptr);
-
+	parse_opcodes();
+	
 	return (EXIT_SUCCESS);
 }
 
-void main_loop()
+/**
+ * parse_opcodes - parses opcodes read from script file
+ */
+void parse_opcodes()
 {
-	char *lineptr = NULL, **words = NULL;
 	ssize_t rbytes = 0;
 	size_t n = 0;
 	int i = 0;
 
 	while (1)
 	{
-		rbytes = getline(&lineptr, &n, data.file_ptr);
+		rbytes = getline(&(data.line), &n, data.fp);
 		if (rbytes == -1)
 			break;
-		words = strtow(lineptr, " \t\n"); /* TODO: what if they added a newline? */
-		data.words = words;
-
-		if (words)
+		data.words = strtow(data.line, " \t\n");
+		if (data.words)
 		{
-			for (i = 0; words[i]; i++)
+			for (i = 0; data.words[i]; i++)
 				;
 			data.num_words = i;
-
-			get_opcode(words[0]);
+			exec_opcode(data.words[0]);
 		}
 
 		data.line_number++;
-		if (lineptr)
-		{
-			free(lineptr);
-			lineptr = NULL;
-			ffree(data.words);
-			data.words = NULL;
-		}
+		free_data(0);
 	}
 
-	if (lineptr)
-		free(lineptr);
-	if (data.stack)
-		free_dlistint(data.stack);
+	free_data(1);
 }
 
-int get_opcode(char *word)
+/**
+ * exec_opcode - Executes the given opcode if valid
+ * @word: the opcode string
+ * Returns: 1 on success, 0 on failure
+ */
+int exec_opcode(char *word)
 {
 	instruction_t opcodes[] = {
 		{"push", opcode_push},

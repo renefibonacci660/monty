@@ -12,6 +12,7 @@
 #define FAILURE 0
 #define USAGE "USAGE: monty file\n"
 #define ERR_SWAP "L<%d>: can't swap, stack too short\n"
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -50,19 +51,24 @@ typedef struct instruction_s
  */
 typedef struct data
 {
-	FILE *file_ptr;
+	FILE *fp;
 	stack_t *stack;
 	unsigned int line_number;
 	char **words;
 	int num_words;
+	char *line;
 } data_t;
 
-#define INIT_DATA {NULL, NULL, 1, NULL, 0}
+#define INIT_DATA {NULL, NULL, 1, NULL, 0, NULL}
 
 extern data_t data;
 
 #include "lists.h"
 
+/* interpreter.c */
+int interpret(int ac, char **av);
+void parse_opcodes();
+int exec_opcode(char *word);
 
 /* stack.c */
 int push(stack_t **head, int n);
@@ -70,6 +76,9 @@ int pop(stack_t **head);
 int peek(stack_t **head);
 int is_empty(stack_t **head);
 void pall(stack_t *head);
+
+/* data.c */
+void free_data(int all);
 
 /* token.c */
 char **strtow(char *str, char *d);
@@ -83,7 +92,7 @@ void opcode_pint(stack_t **stack, unsigned int line_number);
 void opcode_pall(stack_t **stack, unsigned int line_number);
 void opcode_swap(stack_t **stack, unsigned int line_number);
 
-/* opcodes1.c */
+/* opcodes2.c */
 void opcode_nop(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number);
 
