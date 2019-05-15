@@ -23,6 +23,7 @@
 #define ERR_DIV "L%d: can't div, stack too short\n"
 #define ERR_MUL "L%d: can't mul, stack too short\n"
 #define ERR_ZERO "L%d: division by zero\n"
+#define ERR_MOD "L%d: can't mod, stack too short\n"
 
 
 /**
@@ -105,15 +106,14 @@ void opcode_pall(stack_t **stack, unsigned int line_number);
 void opcode_swap(stack_t **stack, unsigned int line_number);
 
 /* opcodes2.c */
-void opcode_nop(__attribute__((unused))stack_t **stack,
-	__attribute__((unused))unsigned int line_number);
-void opcode_add(__attribute__((unused))stack_t **stack,
-	__attribute__((unused))unsigned int line_number);
-void opcode_sub(__attribute__((unused))stack_t **stack,
-	__attribute__((unused))unsigned int line_number);
-void opcode_div(__attribute__((unused))stack_t **stack,
-	__attribute__((unused))unsigned int line_number);
-void opcode_mul(__attribute__((unused))stack_t **stack,
-	__attribute__((unused))unsigned int line_number);
+void opcode_nop(stack_t **stack, unsigned int line_number);
+void opcode_add(stack_t **stack, unsigned int line_number);
+void opcode_sub(stack_t **stack, unsigned int line_number);
+void opcode_div(stack_t **stack, unsigned int line_number);
+void opcode_mul(stack_t **stack, unsigned int line_number);
+
+/* opcodes3.c */
+void opcode_mod(stack_t **stack, unsigned int line_number);
+
 
 #endif

@@ -42,24 +42,7 @@ void parse_opcodes()
 		rbytes = getline(&(data()->line), &n, data()->fp);
 		if (rbytes == -1)
 			break;
-		i = 0;
-		while(1)
-		{
-			if(data()->line[i] == ' ' || data()->line[i] == '\t')
-				i++;
-			else
-			{
-				if (data()->line[i] == '#')
-					i = -1;
-				break;
-			}
-		}
-		if (i == -1)
-		{
-			data()->line_number++;
-			free_data(0);
-			continue;
-		}
+
 		data()->words = strtow(data()->line, " \t\n");
 		if (data()->words && data()->words[0] && data()->words[0][0] != '#')
 		{
@@ -94,6 +77,7 @@ int exec_opcode(char *word)
 		{"sub", opcode_sub},
 		{"div", opcode_div},
 		{"mul", opcode_mul},
+		{"mod", opcode_mod},
 		{NULL, NULL}
 	};
 
