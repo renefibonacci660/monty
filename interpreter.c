@@ -43,7 +43,7 @@ void parse_opcodes()
 		if (rbytes == -1)
 			break;
 		data()->words = strtow(data()->line, " \t\n");
-		if (data()->words && data()->words[0][0] != '#')
+		if (data()->words && data()->words[0] && data()->words[0][0] != '#')
 		{
 			for (i = 0; data()->words[i]; i++)
 				;
