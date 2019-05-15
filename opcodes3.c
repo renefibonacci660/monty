@@ -1,10 +1,9 @@
 #include "monty.h"
 
 /**
- * opcode_mod - 
+ * opcode_mod - opcode for modulus (%)
  * @stack: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @line_number: number of line
  **/
 void opcode_mod(__attribute__((unused))stack_t **stack,
 	__attribute__((unused))unsigned int line_number)
@@ -24,7 +23,7 @@ void opcode_mod(__attribute__((unused))stack_t **stack,
 	{
 		dprintf(STDERR_FILENO, ERR_ZERO, data()->line_number);
 		free_data(1);
-		exit(EXIT_FAILURE);	
+		exit(EXIT_FAILURE);
 	}
 	insert_dnodeint_at_index(stack, 0, m % n);
 }
