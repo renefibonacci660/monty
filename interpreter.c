@@ -80,6 +80,7 @@ int exec_opcode(char *word)
 		{"add", opcode_add},
 		{"sub", opcode_sub},
 		{"div", opcode_div},
+		{"mul", opcode_mul},
 		{NULL, NULL}
 	};
 

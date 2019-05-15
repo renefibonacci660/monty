@@ -80,3 +80,26 @@ void opcode_div(__attribute__((unused))stack_t **stack,
 	(void)n;
 	insert_dnodeint_at_index(stack, 0, m / n);
 }
+
+/**
+ * opcode_mul - 
+ * @stack: pointer to pointer to first node
+ * @n: int value to be in added node
+ * Return:
+ **/
+void opcode_mul(__attribute__((unused))stack_t **stack,
+	__attribute__((unused))unsigned int line_number)
+{
+	int n;
+	int m;
+
+	if (!get_dnodeint_at_index(*stack, 1))
+	{
+		dprintf(STDERR_FILENO, ERR_MUL, data.line_number);
+		return;
+	}
+	n = pop(stack);
+	m = pop(stack);
+	(void)n;
+	insert_dnodeint_at_index(stack, 0, m * n);
+}
