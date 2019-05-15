@@ -15,17 +15,16 @@ int push(stack_t **head, int n)
 /**
  * pop - pops node from stack (head)
  * @head: pointer to pointer to first node
- * @n: value to be in added node
  * Return: n
  **/
 int pop(stack_t **head)
 {
 	stack_t *node = get_dnodeint_at_index(*head, 0);
 	int n = 0;
-	
+
 	n = node->n;
 	delete_dnodeint_at_index(head, 0);
-	return n;
+	return (n);
 }
 
 /**
@@ -53,10 +52,8 @@ int is_empty(stack_t **head)
 }
 
 /**
- * pall - 
- * @head: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * pall - prints all the values on the stack (starting with head)
+ * @head: pointer to first node
  **/
 void pall(stack_t *head)
 {
