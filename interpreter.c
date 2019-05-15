@@ -8,7 +8,6 @@
  */
 int interpret(int ac, char **av)
 {	
-	return (EXIT_SUCCESS);
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, USAGE);

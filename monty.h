@@ -11,15 +11,15 @@
 
 #define FAILURE 0
 #define USAGE "USAGE: monty file\n"
-#define ERR_FILE "Error: Can't open file <%s>\n"
-#define ERR_OPCODE "L<%d>: unknown instruction <%s>\n"
+#define ERR_FILE "Error: Can't open file %s\n"
+#define ERR_OPCODE "L%d: unknown instruction %s\n"
 #define ERR_MALLOC "Error: malloc failed\n"
-#define ERR_PUSH "L<%d>: usage: push integer\n"
-#define ERR_SWAP "L<%d>: can't swap, stack too short\n"
-#define ERR_ADD "L<%d>: can't pop an empty stack\n"
-#define ERR_SUB "L<%d>: can't sub, stack too short\n"
-#define ERR_DIV "L<%d>: can't div, stack too short\n"
-#define ERR_MUL "L<%d>: can't mul, stack too short\n"
+#define ERR_PUSH "L%d: usage: push integer\n"
+#define ERR_SWAP "L%d: can't swap, stack too short\n"
+#define ERR_ADD "L%d: can't pop an empty stack\n"
+#define ERR_SUB "L%d: can't sub, stack too short\n"
+#define ERR_DIV "L%d: can't div, stack too short\n"
+#define ERR_MUL "L%d: can't mul, stack too short\n"
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
