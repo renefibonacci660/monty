@@ -26,7 +26,7 @@ void opcode_add(__attribute__((unused))stack_t **stack,
 
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
-		dprintf(STDERR_FILENO, ERR_ADD, data.line_number);
+		dprintf(STDERR_FILENO, ERR_ADD, data()->line_number);
 		return;
 	}
 	n = pop(stack);
@@ -49,7 +49,7 @@ void opcode_sub(__attribute__((unused))stack_t **stack,
 
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
-		dprintf(STDERR_FILENO, ERR_SUB, data.line_number);
+		dprintf(STDERR_FILENO, ERR_SUB, data()->line_number);
 		return;
 	}
 	n = pop(stack);
@@ -72,7 +72,7 @@ void opcode_div(__attribute__((unused))stack_t **stack,
 
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
-		dprintf(STDERR_FILENO, ERR_DIV, data.line_number);
+		dprintf(STDERR_FILENO, ERR_DIV, data()->line_number);
 		return;
 	}
 	n = pop(stack);
@@ -95,7 +95,7 @@ void opcode_mul(__attribute__((unused))stack_t **stack,
 
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
-		dprintf(STDERR_FILENO, ERR_MUL, data.line_number);
+		dprintf(STDERR_FILENO, ERR_MUL, data()->line_number);
 		return;
 	}
 	n = pop(stack);

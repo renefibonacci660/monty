@@ -1,7 +1,5 @@
 #include "monty.h"
 
-data_t data = INIT_DATA; 
-
 /**
  * interpret - Primary starting point for program
  * @ac: argument count
@@ -16,8 +14,8 @@ int interpret(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 
-	data.fp = fopen(av[1], "r");
-	if (!data.fp)
+	data()->fp = fopen(av[1], "r");
+	if (!data()->fp)
 	{
 		if (errno == EACCES)
 			dprintf(STDERR_FILENO, "Error: EACCES\n");
@@ -44,19 +42,19 @@ void parse_opcodes()
 
 	while (1)
 	{
-		rbytes = getline(&(data.line), &n, data.fp);
+		rbytes = getline(&(data()->line), &n, data()->fp);
 		if (rbytes == -1)
 			break;
-		data.words = strtow(data.line, " \t\n");
-		if (data.words)
+		data()->words = strtow(data()->line, " \t\n");
+		if (data()->words)
 		{
-			for (i = 0; data.words[i]; i++)
+			for (i = 0; data()->words[i]; i++)
 				;
-			data.num_words = i;
-			exec_opcode(data.words[0]);
+			data()->num_words = i;
+			exec_opcode(data()->words[0]);
 		}
 
-		data.line_number++;
+		data()->line_number++;
 		free_data(0);
 	}
 
@@ -90,11 +88,11 @@ int exec_opcode(char *word)
 	{
 		if (!strcmp(word, opcodes[i].opcode))
 		{
-			opcodes[i].f(&data.stack, data.line_number);
+			opcodes[i].f(&data()->stack, data()->line_number);
 			return (1);
 		}
 	}
 	dprintf(STDERR_FILENO, "Opcode %s not found! On line: %d\n",
-		word, data.line_number);
+		word, data()->line_number);
 	return (0);
 }

@@ -8,13 +8,13 @@
  **/
 void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	if (data.num_words < 2)
+	if (data()->num_words < 2)
 	{
-		dprintf(STDERR_FILENO, "PUSH needs an argument! Line: %d\n", data.line_number);
+		dprintf(STDERR_FILENO, "PUSH needs an argument! Line: %d\n", data()->line_number);
 		return;
 	}
-	printf("PUSH %d\n", atoi(data.words[1]));
-	push(stack, atoi(data.words[1]));
+	printf("PUSH %d\n", atoi(data()->words[1]));
+	push(stack, atoi(data()->words[1]));
 }
 
 /**
@@ -65,10 +65,9 @@ void opcode_swap(stack_t **stack, __attribute__((unused))unsigned int line_numbe
 
 	if (!get_dnodeint_at_index(*stack, 1))
 	{
-		dprintf(STDERR_FILENO, ERR_SWAP, data.line_number);
+		dprintf(STDERR_FILENO, ERR_SWAP, data()->line_number);
 		return;
 	}
 	n = pop(stack);
-	(void)n;
 	insert_dnodeint_at_index(stack, 1, n);
 }

@@ -65,8 +65,6 @@ typedef struct data
 
 #define INIT_DATA {NULL, NULL, 1, NULL, 0, NULL}
 
-extern data_t data;
-
 #include "lists.h"
 
 /* interpreter.c */
@@ -82,6 +80,7 @@ int is_empty(stack_t **head);
 void pall(stack_t *head);
 
 /* data.c */
+data_t *data(void);
 void free_data(int all);
 
 /* token.c */
