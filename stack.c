@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * push - pushes node to stack
+ * push - pushes node to stack (head)
  * @head: pointer to pointer to first node
  * @n: int value to be in added node
  * Return: 1 is added 0 otherwise
@@ -13,10 +13,10 @@ int push(stack_t **head, int n)
 }
 
 /**
- * pop - 
+ * pop - pops node from stack (head)
  * @head: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * @n: value to be in added node
+ * Return: n
  **/
 int pop(stack_t **head)
 {
@@ -29,10 +29,9 @@ int pop(stack_t **head)
 }
 
 /**
- * peek - 
+ * peek - gets node at stack(head)
  * @head: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * Return: node or Failure unreachable
  **/
 int peek(stack_t **head)
 {
@@ -44,10 +43,9 @@ int peek(stack_t **head)
 }
 
 /**
- * is_empty - 
+ * is_empty - called if empty for correct return
  * @head: pointer to pointer to first node
- * @n: int value to be in added node
- * Return:
+ * Return: head index (of zero)
  **/
 int is_empty(stack_t **head)
 {
