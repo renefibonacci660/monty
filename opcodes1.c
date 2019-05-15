@@ -32,15 +32,13 @@ void opcode_push(stack_t **stack, __attribute__((unused))unsigned int line_numbe
  **/
 void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	int n = 0;
 	if (!get_dnodeint_at_index(*stack, 0))
 	{
 		dprintf(STDERR_FILENO, ERR_POP, data()->line_number);
 		free_data(1);
 		exit(EXIT_FAILURE);
 	}
-	n = pop(stack);
-	printf("%d\n", n);
+	pop(stack);
 }
 
 /**
