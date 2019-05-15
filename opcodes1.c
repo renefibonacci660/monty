@@ -38,6 +38,12 @@ void opcode_pop(stack_t **stack, __attribute__((unused))unsigned int line_number
  **/
 void opcode_pint(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
+	if (!get_dnodeint_at_index(*stack, 0))
+	{
+		dprintf(STDERR_FILENO, ERR_PINT, data()->line_number);
+		free_data(1);
+		exit(EXIT_FAILURE);
+	}
 	printf("%d\n", peek(stack));
 }
 
