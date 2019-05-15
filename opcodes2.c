@@ -78,6 +78,12 @@ void opcode_div(__attribute__((unused))stack_t **stack,
 	}
 	n = pop(stack);
 	m = pop(stack);
+	if (!n)
+	{
+		dprintf(STDERR_FILENO, ERR_ZERO, data()->line_number);
+		free_data(1);
+		exit(EXIT_FAILURE);	
+	}
 	insert_dnodeint_at_index(stack, 0, m / n);
 }
 

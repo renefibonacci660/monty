@@ -22,6 +22,8 @@
 #define ERR_SUB "L%d: can't sub, stack too short\n"
 #define ERR_DIV "L%d: can't div, stack too short\n"
 #define ERR_MUL "L%d: can't mul, stack too short\n"
+#define ERR_ZERO "L%d: division by zero\n"
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
