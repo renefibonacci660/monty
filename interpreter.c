@@ -52,13 +52,17 @@ void main_loop()
 		rbytes = getline(&lineptr, &n, data.file_ptr);
 		if (rbytes == -1)
 			break;
-		words = strtow(lineptr, " \t\n"); /* TODO: what if they added a newline? */	
+		words = strtow(lineptr, " \t\n"); /* TODO: what if they added a newline? */
 		data.words = words;
-		for (i = 0; words[i]; i++)
-			;
-		data.num_words = i;
 
-		get_opcode(words[0]);
+		if (words)
+		{
+			for (i = 0; words[i]; i++)
+				;
+			data.num_words = i;
+
+			get_opcode(words[0]);
+		}
 
 		data.line_number++;
 		if (lineptr)
