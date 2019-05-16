@@ -5,7 +5,8 @@
  * @stack: pointer to pointer to first node
  * @line_number: number of line
  **/
-void opcode_push(stack_t **stack, unsigned int line_number)
+void opcode_push(stack_t **stack,
+__attribute__((unused))unsigned int line_number)
 {
 	if (data()->num_words < 2 || !is_num(data()->words[1]))
 	{
@@ -28,7 +29,8 @@ void opcode_push(stack_t **stack, unsigned int line_number)
  * @stack: pointer to pointer to first node
  * @line_number: number of line
  **/
-void opcode_pop(stack_t **stack, unsigned int line_number)
+void opcode_pop(stack_t **stack,
+__attribute__((unused))unsigned int line_number)
 {
 	if (!get_dnodeint_at_index(*stack, 0))
 	{
@@ -44,7 +46,8 @@ void opcode_pop(stack_t **stack, unsigned int line_number)
  * @stack: pointer to pointer to first node
  * @line_number: number of line
  **/
-void opcode_pint(stack_t **stack, unsigned int line_number)
+void opcode_pint(stack_t **stack,
+__attribute__((unused))unsigned int line_number)
 {
 	if (!get_dnodeint_at_index(*stack, 0))
 	{
@@ -60,17 +63,19 @@ void opcode_pint(stack_t **stack, unsigned int line_number)
  * @stack: pointer to pointer to first node
  * @line_number: number of line
  **/
-void opcode_pall(stack_t **stack, unsigned int line_number)
+void opcode_pall(stack_t **stack,
+__attribute__((unused))unsigned int line_number)
 {
 	print_dlistint(*stack);
 }
 
 /**
- * opcode_swap - swaps the top two elements of the stack
+ * opcode_pall - pushes and element to the stack (head)
  * @stack: pointer to pointer to first node
  * @line_number: number of line
  **/
-void opcode_swap(stack_t **stack, unsigned int line_number)
+void opcode_swap(stack_t **stack,
+__attribute__((unused))unsigned int line_number)
 {
 	int n;
 
