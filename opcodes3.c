@@ -98,13 +98,16 @@ void opcode_rotl(stack_t **stack,
 void opcode_rotr(stack_t **stack,
 	__attribute__((unused))unsigned int line_number)
 {
-	int n = dlistint_len(*stack);
+	int len = dlistint_len(*stack);
+	int n;
 	stack_t *node;
 
-	if (n < 2)
+	if (len < 2)
 		return;
 
-	node = get_dnodeint_at_index(*stack, n);
+	node = get_dnodeint_at_index(*stack, len - 1);
 	n = node->n;
+	delete_dnodeint_at_index(stack, len - 1);
+
 	add_dnodeint(stack, n);
 }
