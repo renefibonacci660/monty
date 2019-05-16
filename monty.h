@@ -58,12 +58,12 @@ typedef struct instruction_s
 
 /**
  * struct data - paramater pattern
- * @fp: file_ptr to opened file
- * @stack: adf
- * @line_number: adfas
- * @words: adf
- * @num_words: adfs
- * @line: adfs
+ * @fp: file pointer
+ * @stack: pointer to stack
+ * @line_number: number of line in monty file
+ * @words: pointer to pointer to words
+ * @num_words: number of lines
+ * @line: pointer to line (current)
  * Description: parameter pattern
  */
 typedef struct data
