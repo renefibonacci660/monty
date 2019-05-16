@@ -2,43 +2,69 @@
 
 
 ## Description
-This is a version of a simple shell that utilizes a built UNIX command line interpreter that is able to handle command lines with arguments, execute commands found in the PATH as well as preforms the built-ins exit and env. All input in obtained from stdin and written to stdout.
+This is a interpreter program that is created to interpret Monty-like scripted files according to requested operation codes provided to the authors in the creation of this project. 
 
 ## Formatting and Examples
 
-Format for user to place in standard input:
-command argument
+Format for user to place in "testfile.m":
+opcode argument
+
+NOTE: No more than one instruction per line is allowed, there can however be as many spaces, new lines or tabs before or after the instruction.
 
 
 
 Examples:
 
 
-$ ls -lamp
+home$ cat opcodetestfile.m
+push 1
+push 2
+push 3
+pall
 
-./, ../, .git/, README.md, a.out, apples.c, pears.c, pickles/, testfolder/, header.h
-
-$
-
----
-
-$ echo please work
-
-please work
-
-$
+home$ ./montyfile opcodetestfile.m
+3
+2
+1
+home$
 
 ---
 
-$ tail -3 test.c
+home$ cat opcodetestfile.m
+push 1
+push 2
+push 3
+pall
+rotl
+pall
 
-These are the
+home$ ./montyfile opcodetestfile.m
+3
+2
+1
+2
+1
+3
 
-last
+---
 
-three lines of this file
+home$ cat opcodetestfile.m
+push 4
+push 5
+push 18
+push 3
+pall
+sub
+pall
 
-$
+home$ ./montyfile opcodetestfile.m
+3
+18
+5
+4
+15
+5
+4
 
 ---
 
@@ -48,22 +74,23 @@ $
 
 | File Name | Description |
 | --- | --- |
-| README.md | Provides details regarding functionality and creation of our version of a simple shell (present file) |
-| checkCurrent.c | Checks for specified conditions to execute current directory |
-| countWords.c | Counts number of words from input string |
-| getEnv.c | Gets the environ so we can check for PATH and frees double pointer |
-| getInput.c | Asks the user for input, the input will be used to check for executables |
-| getPath.c | Gets the tokenized input and attempts to find the executable from PATH and executes it if found & concatenates path and command to check if it's an executable|
-| getVar.c | Returns the directories contained in the variable "name" |
-| main.c | Runs a copy of shell and determines functionality |
-| mainshell.c | Main entrance and exit function (runs the shell)|
-| printEnv.c | Prints the environments and exits with status 0 if successful |
-| printError.c | Prints errors in shell format |
-| signalHander.c | When cntrl-c is used, this function resets the buffer |
-| strFunc.c | Recived a string from str and uses _putchar to print every character on the screen followed by newline, compares two strings at a specified length and returns the difference of both strings, concatenates both dest and src strings, measures length  of the string from pointer str, contains a string from source, which will then be copied to pointer dest. It will then return the same pointer that points to dest |
-| token.c | Tokenizes input |
-| holberton.h | Header file; contains libaries and function protoypes |
-| AUTHORS | Lists all contributors to repository |
+| README.md | Provides details regarding functionality and creation of our version of a monty program (present file) |
+| data.c | Contains data struct singleton pattern, returns pointer to our struct and central controler to free all data |
+| dlist1.c | Handles data list functions length, sum, print and add node to end of list |
+| dlist2.c | Handles data list functions add node to head, insert, get, delete node at index and free the list |
+| interpreter.c | Starting point of program; counts arguments, calls strtok, parses opcode and executes if valid |
+| lists.h | Header file containing dlist prototypes, libraries and dlist struct definition |
+| main.c | Entry point of program, interprets return |
+| monty.h | Calls libraries, holds prototypes for all files except dlists, defines structs for parameter pattern, opcode functionality and doubly linked-list representation of stack. Contains all error code definitions |
+| opcodes1.c | Contains operation code functions for push, pop, pint, pall and swap |
+| opcodes2.c | Contains operation code functions for nop, add, sub, div and mul |
+| opcodes3.c | Contains the operation code functions for mod, pchar, pstr, rotl and rotr |
+| opcodes4.c | Contains the operation code functions for stack and queue (uses boolian values) |
+| stack.c | Handles push, pop, peek, if string is empty from input and pall(prints) |
+| token.c | Tokenizes input string, checks that all strings are proper input and checks delimiters |
+
+## Exit Status
+Exits with status EXIT_FAILURE
 
 ## Compilation
 All files where compiled on Ubuntu 14.04 LTS.
@@ -74,5 +101,5 @@ All programs and functions were compiled with gcc 4.8.4 using flags -Wall -Werro
 All files have been written in the Betty Style for a cohesive and readable format.
 
 ## Authors
-* **Arthur Damm** - [GeorgeSolorio](https://github.com/arthurdamm)
+* **Arthur Damm** - [Arthur Damm](https://github.com/arthurdamm)
 * **Rene Goertzen** - [renefibonacci660](https://github.com/renefibonacci660)
