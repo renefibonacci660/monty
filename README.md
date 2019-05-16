@@ -17,57 +17,90 @@ Examples:
 
 
 home$ cat opcodetestfile.m
+
 push 1
+
 push 2
+
 push 3
+
 pall
 
 home$ ./montyfile opcodetestfile.m
+
 3
+
 2
+
 1
+
 home$
 
 ---
 
 home$ cat opcodetestfile.m
+
 push 1
+
 push 2
+
 push 3
+
 pall
+
 rotl
+
 pall
 
 home$ ./montyfile opcodetestfile.m
+
 3
+
 2
+
 1
+
 2
+
 1
+
 3
 
 ---
 
 home$ cat opcodetestfile.m
+
 push 4
+
 push 5
+
 push 18
+
 push 3
+
 pall
+
 sub
+
 pall
 
 home$ ./montyfile opcodetestfile.m
+
 3
+
 18
+
 5
+
 4
+
 15
+
 5
+
 4
 
 ---
-
 
 
 ## File List
