@@ -24,6 +24,8 @@
 #define ERR_MUL "L%d: can't mul, stack too short\n"
 #define ERR_ZERO "L%d: division by zero\n"
 #define ERR_MOD "L%d: can't mod, stack too short\n"
+#define ERR_PCHAR "L%d: can't pchar, stack empty\n"
+#define ERR_NOCHAR "L%d: can't pchar, value out of range\n"
 
 
 /**
@@ -118,6 +120,6 @@ void opcode_mul(stack_t **stack, unsigned int line_number);
 
 /* opcodes3.c */
 void opcode_mod(stack_t **stack, unsigned int line_number);
-
+void opcode_pchar(stack_t **stack, unsigned int line_number);
 
 #endif

@@ -78,6 +78,7 @@ int exec_opcode(char *word)
 		{"div", opcode_div},
 		{"mul", opcode_mul},
 		{"mod", opcode_mod},
+		{"pchar", opcode_pchar},
 		{NULL, NULL}
 	};
 

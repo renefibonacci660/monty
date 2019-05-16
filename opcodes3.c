@@ -27,3 +27,29 @@ void opcode_mod(__attribute__((unused))stack_t **stack,
 	}
 	insert_dnodeint_at_index(stack, 0, m % n);
 }
+
+/**
+ * opcode_pchar - opcode for modulus (%)
+ * @stack: pointer to pointer to first node
+ * @line_number: number of line
+ **/
+void opcode_pchar(__attribute__((unused))stack_t **stack,
+	__attribute__((unused))unsigned int line_number)
+{
+	int n;
+
+	if (!get_dnodeint_at_index(*stack, 0))
+	{
+		dprintf(STDERR_FILENO, ERR_PCHAR, data()->line_number);
+		free_data(1);
+		exit(EXIT_FAILURE);
+	}
+	n = peek(stack);
+	if (n < 0 || n > 127)
+	{
+		dprintf(STDERR_FILENO, ERR_NOCHAR, data()->line_number);
+		free_data(1);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", n);
+}
