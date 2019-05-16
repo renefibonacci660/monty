@@ -71,3 +71,21 @@ void opcode_pstr(stack_t **stack,
 	}
 	printf("\n");
 }
+
+/**
+ * opcode_rotl - rotates the stack (head) to end
+ * @stack: pointer to pointer to first node
+ * @line_number: number of line
+ **/
+void opcode_rotl(stack_t **stack,
+	__attribute__((unused))unsigned int line_number)
+{
+	int n;
+
+	if (!get_dnodeint_at_index(*stack, 1))
+		return;
+
+	n = pop(stack);
+
+	add_dnodeint_end(stack, n);
+}

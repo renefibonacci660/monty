@@ -80,6 +80,7 @@ int exec_opcode(char *word)
 		{"mod", opcode_mod},
 		{"pchar", opcode_pchar},
 		{"pstr", opcode_pstr},
+		{"rotl", opcode_rotl},
 		{NULL, NULL}
 	};
 
