@@ -101,5 +101,5 @@ All programs and functions were compiled with gcc 4.8.4 using flags -Wall -Werro
 All files have been written in the Betty Style for a cohesive and readable format.
 
 ## Authors
-* **Arthur Damm** - [Arthur Damm](https://github.com/arthurdamm)
+* **Arthur Damm** - [arthurdamm](https://github.com/arthurdamm)
 * **Rene Goertzen** - [renefibonacci660](https://github.com/renefibonacci660)
