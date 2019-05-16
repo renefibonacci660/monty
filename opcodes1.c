@@ -18,9 +18,7 @@ __attribute__((unused))unsigned int line_number)
 
 	if (!push(stack, atoi(data()->words[1])))
 	{
-		dprintf(STDERR_FILENO, ERR_MALLOC);
-		free_data(1);
-		exit(EXIT_FAILURE);
+
 	}
 }
 
