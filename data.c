@@ -2,16 +2,18 @@
 
 /**
  * data - data struct singleton pattern, returns pointer to our secret struct
+ * Return: address of static struct
  */
 data_t *data(void)
 {
 	static data_t _data = INIT_DATA;
-	return &(_data);
+
+	return (&_data);
 }
 
 /**
  * free_data - central controller method which frees all allocated data
- * @all - on if freeing all data, such as on exit, else just some
+ * @all: on if freeing all data, such as on exit, else just some
  */
 void free_data(int all)
 {

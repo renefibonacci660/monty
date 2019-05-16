@@ -2,12 +2,12 @@
 
 /**
  * main - entry point. Decoupled from interpreter modules
- * 		for portability
+ *    for portability
  * @ac: argument count
  * @av: argument vector
- * Returns: 1 on success, 0 on failure
+ * Return: 1 on failure, 0 on success
  */
 int main(int ac, char **av)
 {
-	return interpret(ac, av);
+	return (interpret(ac, av));
 }
