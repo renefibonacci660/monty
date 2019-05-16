@@ -58,8 +58,12 @@ typedef struct instruction_s
 
 /**
  * struct data - paramater pattern
- * @file_ptr: file_ptr to opened file
- *
+ * @fp: file_ptr to opened file
+ * @stack: adf
+ * @line_number: adfas
+ * @words: adf
+ * @num_words: adfs
+ * @line: adfs
  * Description: parameter pattern
  */
 typedef struct data
@@ -78,7 +82,7 @@ typedef struct data
 
 /* interpreter.c */
 int interpret(int ac, char **av);
-void parse_opcodes();
+void parse_opcodes(void);
 int exec_opcode(char *word);
 
 /* stack.c */
