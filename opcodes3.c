@@ -89,3 +89,22 @@ void opcode_rotl(stack_t **stack,
 
 	add_dnodeint_end(stack, n);
 }
+
+/**
+ * opcode_rotr - rotates the end of stack to head
+ * @stack: pointer to pointer to first node
+ * @line_number: number of line
+ **/
+void opcode_rotr(stack_t **stack,
+	__attribute__((unused))unsigned int line_number)
+{
+	int n = dlistint_len(*stack);
+	stack_t *node;
+
+	if (n < 2)
+		return;
+
+	node = get_dnodeint_at_index(*stack, n);
+	n = node->n;
+	add_dnodeint(stack, n);
+}
