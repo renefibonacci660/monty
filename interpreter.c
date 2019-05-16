@@ -82,6 +82,8 @@ int exec_opcode(char *word)
 		{"pstr", opcode_pstr},
 		{"rotl", opcode_rotl},
 		{"rotr", opcode_rotr},
+		{"stack", opcode_stack},
+		{"queue", opcode_queue},
 		{NULL, NULL}
 	};
 

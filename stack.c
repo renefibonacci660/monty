@@ -8,6 +8,8 @@
  **/
 int push(stack_t **head, int n)
 {
+	if (data()->queue_mode)
+		return (!!add_dnodeint_end(head, n));
 	/* !!(x) converts any data type x into a boolean appropriately */
 	return (!!add_dnodeint(head, n));
 }

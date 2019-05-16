@@ -66,6 +66,7 @@ typedef struct instruction_s
  * @words: pointer to pointer to words
  * @num_words: number of lines
  * @line: pointer to line (current)
+ * @queue_mode: 1 if in queue mode else 0
  * Description: parameter pattern
  */
 typedef struct data
@@ -76,9 +77,10 @@ typedef struct data
 	char **words;
 	int num_words;
 	char *line;
+	int queue_mode;
 } data_t;
 
-#define INIT_DATA {NULL, NULL, 1, NULL, 0, NULL}
+#define INIT_DATA {NULL, NULL, 1, NULL, 0, NULL, 0}
 
 #include "lists.h"
 
@@ -124,5 +126,10 @@ void opcode_pchar(stack_t **stack, unsigned int line_number);
 void opcode_pstr(stack_t **stack, unsigned int line_number);
 void opcode_rotl(stack_t **stack, unsigned int line_number);
 void opcode_rotr(stack_t **stack, unsigned int line_number);
+
+/* opcodes4.c */
+void opcode_stack(stack_t **stack, unsigned int line_number);
+void opcode_queue(stack_t **stack, unsigned int line_number);
+
 
 #endif
