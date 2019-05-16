@@ -53,3 +53,21 @@ void opcode_pchar(__attribute__((unused))stack_t **stack,
 	}
 	printf("%c\n", n);
 }
+
+/**
+ * opcode_str - prints str
+ * @stack: pointer to pointer to first node
+ * @line_number: number of line
+ **/
+void opcode_pstr(stack_t **stack,
+	__attribute__((unused))unsigned int line_number)
+{
+	stack_t *node = get_dnodeint_at_index(*stack, 0);
+
+	while (node && node->n > 0 && node->n < 128)
+	{
+		printf("%c", node->n);
+		node = node->next;
+	}
+	printf("\n");
+}
